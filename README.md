@@ -9,3 +9,6 @@ Stop generic practice. Start targeted mastery.
 
 <img width="1704" height="1325" alt="Untitled design (3)" src="https://github.com/user-attachments/assets/036561d7-4d12-4357-92ff-ef2634d6c78e" />
 
+<h1> Login to get started with SPOT AI </h1>
+
+<img width="1919" height="862" alt="{B6C05A6E-68FA-4E11-88A5-AAA54BBECBC1}" src="https://github.com/user-attachments/assets/d1271bd3-fd4c-4b88-b50b-2e8d38f5c139" />
