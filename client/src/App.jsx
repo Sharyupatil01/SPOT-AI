@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 import HowItWorks from "./components/HowItWorks";
-import DotGrid from './components/DotGrid'; // path must be correct
+import DotGrid from './components/DotGrid';
 import GlitterEffect from './components/GlitterEffect';
 import Testimonials from './components/Testimonials';
 import { Glow, GlowCapture } from "@codaworks/react-glow";
+import BlindSpotSimulatorCard from "./components/BlindSpotSimulatorCard";
+import Login from "./components/Login";
 
-// --- Icons ---
+// Icons
 const ZapIcon = (props) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24"
     viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-  </svg>
-);
-
-const UserIcon = (props) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-    viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-    <circle cx="12" cy="7" r="4" />
   </svg>
 );
 
@@ -37,8 +31,7 @@ const FeatherIcon = (props) => (
   </svg>
 );
 
-
-// --- Feature Card Component ---
+// Feature Card
 function FeatureCard({ icon, title, description }) {
   return (
     <div className="
@@ -55,22 +48,16 @@ function FeatureCard({ icon, title, description }) {
   );
 }
 
-
-// =========================
-//        MAIN APP
-// =========================
 export default function App() {
   const [view, setView] = useState("landing");
 
-
-  // =========================
-  //   LANDING PAGE (MAIN)
-  // =========================
+  // ===============================
+  // LANDING PAGE
+  // ===============================
   if (view === "landing") {
     return (
       <div className="min-h-screen bg-gray-950 text-white relative overflow-hidden font-sans">
         <GlitterEffect />
-
 
         {/* HEADER */}
         <header className="
@@ -78,53 +65,74 @@ export default function App() {
           fixed w-full top-0 z-50
           backdrop-blur-xl bg-gray-900/40 border-b border-white/10
         ">
-          <h2 className="text-3xl font-extrabold tracking-tight">
+          <h2 className="text-3xl font-extrabold">
             Spot <span className="text-red-600">Ai</span>
           </h2>
 
+          {/* LOGIN BUTTON → GOES TO LOGIN PAGE */}
           <button
-            onClick={() => setView("experience")}
-            className="px-5 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition shadow-lg hover:shadow-indigo-500/40"
+            onClick={() => setView("login")}
+            className="
+              px-6 py-2 rounded-xl font-semibold
+              bg-white/10 backdrop-blur-xl border border-white/20
+              shadow-lg shadow-indigo-500/20
+              hover:bg-white/20 hover:shadow-indigo-400/40
+              hover:scale-[1.03] active:scale-[0.98]
+              transition-all duration-300
+            "
           >
             Login
           </button>
         </header>
 
-
         {/* MAIN CONTENT */}
         <main className="container mx-auto px-4 md:px-12 pt-36 pb-20 relative">
 
+          {/* HERO SECTION */}
+          <section className="mb-24 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-          {/* HERO */}
-          <section className="text-center mb-24">
-            <p className="text-indigo-400 uppercase tracking-[0.25em] text-sm mb-4">
-              Know Your Gaps. Fix Them Fast.
-            </p>
+            {/* LEFT SIDE TEXT */}
+            <div className="text-center lg:text-left">
 
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
-              Prep Smarter with
-              <span className="text-red-600"> SPOT AI</span>
-            </h1>
+              <p className="text-indigo-400 uppercase tracking-[0.25em] text-sm mb-4">
+                Know Your Gaps. Fix Them Fast.
+              </p>
 
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
-              Your personal AI interview coach — built to analyze your experience,
-              detect blind spots, and help you improve faster than ever.
-            </p>
+              <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+                Prep Smarter with
+                <span className="text-red-600"> SPOT AI</span>
+              </h1>
 
-            <button
-              onClick={() => setView("experience")}
-              className="
-                px-12 py-4 bg-indigo-600/90 rounded-full text-xl font-semibold
-                shadow-2xl backdrop-blur-lg transition-all duration-300
-                hover:bg-indigo-700 hover:scale-105
-              "
-            >
-              Start Your Journey
-            </button>
+              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mb-10">
+                Your personal AI interview coach — built to analyze your experience,
+                detect blind spots, and help you improve faster than ever.
+              </p>
+
+              {/* CTA BUTTON → GOES TO LOGIN */}
+              <button
+                onClick={() => setView("login")}
+                className="
+                  px-12 py-4 rounded-xl text-xl font-semibold
+                  bg-white/10 backdrop-blur-xl border border-white/20
+                  shadow-lg shadow-indigo-500/20
+                  hover:bg-white/20 hover:shadow-indigo-400/40
+                  hover:scale-[1.03] active:scale-[0.98]
+                  transition-all duration-300
+                "
+              >
+                Start Your Journey
+              </button>
+
+            </div>
+
+            {/* RIGHT SIDE — CARD */}
+            <div className="flex justify-center lg:justify-end">
+              <BlindSpotSimulatorCard setView={setView} />
+            </div>
+
           </section>
 
-
-          {/* WHY CHOOSE SPOT AI */}
+          {/* WHY CHOOSE SECTION */}
           <section className="mt-20">
             <h2 className="text-center text-4xl font-bold mb-12">
               Why Choose Spot Ai?
@@ -133,53 +141,43 @@ export default function App() {
             <GlowCapture>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-
-                {/* CARD 1 - PURPLE */}
                 <Glow color="purple">
                   <div className="rounded-2xl p-[2px]">
                     <FeatureCard
                       icon={<BriefcaseIcon className="w-9 h-9 text-indigo-400" />}
                       title="Identify Weak Areas"
-                      description="Find exactly what’s holding you back — and fix it with targeted practice."
+                      description="Find exactly what’s holding you back — and fix it."
                     />
                   </div>
                 </Glow>
 
-
-                {/* CARD 2 - BLUE */}
                 <Glow color="blue">
                   <div className="rounded-2xl p-[2px]">
                     <FeatureCard
                       icon={<ZapIcon className="w-9 h-9 text-indigo-400" />}
                       title="Contextual Feedback"
-                      description="Spot Ai learns from your past interviews and gives hyper-personalized guidance."
+                      description="Spot Ai learns from your past interviews automatically."
                     />
                   </div>
                 </Glow>
 
-
-                {/* CARD 3 - PINK */}
                 <Glow color="pink">
                   <div className="rounded-2xl p-[2px]">
                     <FeatureCard
                       icon={<FeatherIcon className="w-9 h-9 text-indigo-400" />}
                       title="Master Every Interview"
-                      description="Track progress, remove blind spots, and build unstoppable confidence."
+                      description="Track progress, remove blind spots, gain confidence."
                     />
                   </div>
                 </Glow>
 
-
               </div>
             </GlowCapture>
           </section>
-         <HowItWorks/>
 
-          {/* TESTIMONIALS */}
+          <HowItWorks />
           <Testimonials />
 
-
-          {/* FOOTER */}
           <footer className="mt-20 pt-10 border-t border-white/10 text-center text-gray-500">
             © {new Date().getFullYear()} Spot Ai — All Rights Reserved.
           </footer>
@@ -189,18 +187,26 @@ export default function App() {
     );
   }
 
-
-
-  // =========================
-  //      EXPERIENCE VIEW
-  // =========================
+  // ==========================
+  // EXPERIENCE VIEW
+  // ==========================
   if (view === "experience") {
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center flex-col">
-        <p className="text-2xl text-gray-400 mb-4">Interview Experience Form Coming Soon!</p>
+        <p className="text-2xl text-gray-400 mb-4">
+          Interview Experience Form Coming Soon!
+        </p>
+
         <button
           onClick={() => setView("landing")}
-          className="p-3 bg-indigo-600 rounded-lg hover:bg-indigo-700"
+          className="
+            px-6 py-3 rounded-xl font-semibold
+            bg-white/10 backdrop-blur-xl border border-white/20
+            shadow-lg shadow-indigo-500/20
+            hover:bg-white/20 hover:shadow-indigo-400/40
+            hover:scale-[1.03] active:scale-[0.98]
+            transition-all duration-300
+          "
         >
           Back to Landing
         </button>
@@ -208,6 +214,12 @@ export default function App() {
     );
   }
 
+  // ==========================
+  // LOGIN PAGE
+  // ==========================
+  if (view === "login") {
+    return <Login setView={setView} />;
+  }
 
-  return <div className="text-center text-white p-20">Loading...</div>;
+  return <div className="text-white p-20 text-center">Loading...</div>;
 }
