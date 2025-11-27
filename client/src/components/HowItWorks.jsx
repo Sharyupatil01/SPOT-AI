@@ -25,8 +25,12 @@ export default function HowItWorks() {
 
       {/* Title */}
       <h2 className="text-center text-4xl font-bold mb-16">
-        How <span className="text-indigo-400">Spot Ai</span> Works
+        How <span className="text-red-500">Spot AI</span> Works
+         <div className="w-full flex justify-center my-6">
+                <div className="h-px w-70 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+            </div>
       </h2>
+      
 
       {/* Stepper Line */}
       <div className="absolute left-1/2 top-44 -translate-x-1/2 hidden md:block">
